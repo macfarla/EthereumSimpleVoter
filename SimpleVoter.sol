@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity >=0.4.22 <0.6.0;
 
 contract SimpleVoter {
     
@@ -8,8 +8,8 @@ contract SimpleVoter {
     
     function castVote( bool _vote ) public {
         
-        assert( hasVoted[msg.sender] != true );
-        
+        require( hasVoted[msg.sender] != true, "Already voted!" );
+ 
         if (_vote) {
             yeses++;
         } else {
